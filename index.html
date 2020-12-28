@@ -149,7 +149,10 @@
             <button id="go-button" class="col-auto btn btn-outline-primary" onclick="run()">Roll!</button>
             <div class="col-auto">
                 <input type="checkbox" id="update_armies" name="update_armies" value="update" checked="true">
-                <label for="update_armies"> Update Armies</label><br>
+                <label for="update_armies"> Update Armies After roll</label><br>
+                <input type="checkbox" id="consider_attacker_army" name="consider_attacker_army" value="update"
+                    checked="true">
+                <label for="consider_attacker_army"> Keep at least one attacker army</label><br>
                 <span id="battle_result_out"></span>
             </div>
         </div>
@@ -157,6 +160,7 @@
         <br>
     </div>
     <script async defer>
+
         function rollADice() {
             return 1 + Math.floor(Math.random() * 6)
         }
@@ -195,9 +199,11 @@
         function get_armies_in_combat() {
             attacker_armies = document.getElementById("attacker_armies").value
             defender_armies = document.getElementById("defender_armies").value
-
+            if (document.getElementById("consider_attacker_army").checked) {
+                attacker_armies -= 1
+            }
             armies_in_combat = {
-                "attacker": Math.min(attacker_armies - 1, 3),
+                "attacker": Math.min(attacker_armies, 3),
                 "defender": Math.min(defender_armies, 3)
             }
             return armies_in_combat
