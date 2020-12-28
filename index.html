@@ -246,6 +246,9 @@
         }
         function run() {
             armies_in_combat = get_armies_in_combat()
+            if (armies_in_combat["attacker"] == 0 || armies_in_combat["defender"] == 0) {
+                return
+            }
             dices = rollDices(armies_in_combat)
             show_dices_results(dices)
             battle_losses = calculate_battle_losses(dices)
