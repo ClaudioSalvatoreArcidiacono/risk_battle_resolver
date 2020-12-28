@@ -8,7 +8,8 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Title!</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <title>Risk Battle Resolver</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
@@ -61,13 +62,14 @@
 
         .dice-group {
             margin: auto;
-            width: 70%;
+            width: 50%;
             margin-top: 3px;
             margin-bottom: 3px;
         }
 
         .dice-group>img {
             max-width: 30%;
+            visibility: hidden;
         }
 
         .main-container {
@@ -173,8 +175,6 @@
             defender_result = dices["defender"].sort((a, b) => b - a)
             max_iter = Math.min(attacker_result.length, defender_result.length)
             losses = { "attacker": 0, "defender": 0 }
-            console.log(attacker_result)
-            console.log(defender_result)
             for (var i = 0; i < max_iter; i++) {
                 if (attacker_result[i] > defender_result[i]) {
                     losses["defender"] += 1
@@ -206,14 +206,17 @@
             defender_dices = document.querySelectorAll("#defender_dices>img")
 
             for (var i = 0; i < 3; i++) {
-                attacker_dices[i].src = ""
-                defender_dices[i].src = ""
+                attacker_dices[i].style.visibility = "hidden"
+                defender_dices[i].style.visibility = "hidden"
             }
             for (var i = 0; i < dices["attacker"].length; i++) {
                 attacker_dices[i].src = "images/dices/" + dices["attacker"][i] + "_red.drawio.svg"
+                attacker_dices[i].style.visibility = "visible"
             }
             for (var i = 0; i < dices["defender"].length; i++) {
                 defender_dices[i].src = "images/dices/" + dices["defender"][i] + "_blue.drawio.svg"
+                defender_dices[i].style.visibility = "visible"
+
             }
         }
 
