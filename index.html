@@ -79,6 +79,10 @@
         .form-label {
             font-size: 1.5em;
         }
+
+        .disable-dbl-tap-zoom {
+            touch-action: manipulation;
+        }
     </style>
 </head>
 
@@ -95,7 +99,7 @@
             </a>
         </div>
     </nav>
-    <div class="container-fluid main-container" style="max-width: 600px;">
+    <div class="container-fluid main-container disable-dbl-tap-zoom" style="max-width: 600px;">
         <form class="row g-3">
             <div class="col align-self-start">
                 <label for="attacker_armies" class="form-label align-middle">Attacker</label><br>
