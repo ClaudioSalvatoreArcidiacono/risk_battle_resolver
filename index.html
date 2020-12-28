@@ -241,7 +241,7 @@
         }
         function show_battle_losses(battle_losses) {
             battle_results_out = document.getElementById("battle_result_out")
-            battle_results_out.textContent = ("Defender loses " + battle_losses["defender"] + "\nAttacker loses " + battle_losses["attacker"])
+            battle_results_out.textContent = ("Attacker loses " + battle_losses["attacker"] + "\nDefender loses " + battle_losses["defender"])
         }
         function should_update_armies() {
             return document.getElementById("update_armies").checked
